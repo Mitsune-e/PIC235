@@ -16,7 +16,7 @@ export const Navbar = () => {
               </li>
               <li className="nav-item">
                 <div className="login-option">
-                  <a className="btn btn-outline-teal" href="/">Login</a>
+                  <a className="btn btn-outline-teal" href="/Login">Login</a>
                 </div>
               </li>
             </ul>

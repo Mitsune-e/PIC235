@@ -6,11 +6,11 @@
   justify-content: center;
 }
 
-.form-cadastro {
+.form-login {
   padding: 10px 30px 20px 30px;
   max-width: 650px;
 }
 
-.titulo-cadastro {
+.titulo-login {
   margin-left: -15px;
 }
