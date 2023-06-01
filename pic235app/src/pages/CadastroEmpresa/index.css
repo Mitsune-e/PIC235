@@ -1,0 +1,28 @@
+.mainbox {
+  margin: auto 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-cadastro {
+  padding: 10px 30px 20px 30px;
+  max-width: 900px;
+}
+
+.titulo-cadastro {
+  margin-left: -15px;
+}
+
+.form-row {
+  display: flex;
+}
+
+.form-input {
+  margin-right: 35px;
+}
+
+.darker-border {
+  border-color: rgba(119, 133, 135, 0.37) !important;
+}

@@ -18,11 +18,11 @@ export const Login = (props) => {
               </div>
 
               <div className="mb-3">
-                <label for="exampleInputEmail1" className="form-label text-navy">Email</label>
+                <label htmlFor="exampleInputEmail1" className="form-label text-navy">Email</label>
                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
               </div>
               <div className="mb-3">
-                <label for="exampleInputPassword1" className="form-label text-navy">Senha</label>
+                <label htmlFor="exampleInputPassword1" className="form-label text-navy">Senha</label>
                 <input type="password" className="form-control" id="exampleInputPassword1" />
               </div>
 
