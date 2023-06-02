@@ -20,6 +20,11 @@ export const CadastroEmpresa = () => {
                   <label htmlFor="InputNameCompany" className="form-label text-navy">Nome Fantasia</label>
                   <input type="text" className="form-control round" placeholder="Nome Fantasia" id="InputInputNameCompany" />
                 </div>
+
+                <div className="mb-3 form-input">
+                  <label htmlFor="InputRazao" className="form-label text-navy">Razão Social</label>
+                  <input type="text" className="form-control round" placeholder="RazaoSocial" id="InputRazao" />
+                </div>
                 <div className="mb-3 form-input">
                   <label htmlFor="InputCNPJ" className="form-label text-navy">CNPJ</label>
                   <input type="text" className="form-control round" placeholder="CNPJ" id="InputCNPJ" />
@@ -47,9 +52,9 @@ export const CadastroEmpresa = () => {
                   <input type="text" className="form-control round" placeholder="Inscrição" id="InputInscricao" />
                 </div>
               </div>
-              {/* Fourth Row, Radio groups */}
+              {/* Fourth Row, Radio groups, Client Types */}
               <div>
-                <label className="form-label text-navy">Tipo de Cliente mais comum:</label>
+                <label className="form-label text-navy">Indique o tipo de cliente mais comum de sua empresa:</label>
                 <ul className="list-group">
                   <li className="list-group-item rounded-pill mb-2 darker-border">
                     <input className="form-check-input me-1" type="radio" name="TipoCliente" value={""} id="TipoCliente1" />
@@ -66,6 +71,24 @@ export const CadastroEmpresa = () => {
                   <li className="list-group-item rounded-pill mb-2 darker-border">
                     <input className="form-check-input me-1" type="radio" name="TipoCliente" value={""} id="TipoCliente4" />
                     <label className="form-check-label" htmlFor="TipoCliente4">Pessoas Físicas (em pequena quantidade; até de 200 clientes)</label>
+                  </li>
+                </ul>
+              </div>
+              {/* Fourth Row, Radio groups, Seller or Provider */}
+              <div>
+                <label className="form-label text-navy">Você vende produto ou presta serviço:</label>
+                <ul className="list-group">
+                  <li className="list-group-item rounded-pill mb-2 darker-border" >
+                    <input className="form-check-input me-1" type="radio" name="TipoEmpresa" value={""} id="TipoEmpresa1" />
+                    <label className="form-check-label" htmlFor="TipoEmpresa1">Produto</label>
+                  </li>
+                  <li className="list-group-item rounded-pill mb-2 darker-border" >
+                    <input className="form-check-input me-1" type="radio" name="TipoEmpresa" value={""} id="TipoEmpresa2" />
+                    <label className="form-check-label" htmlFor="TipoEmpresa2">Serviço</label>
+                  </li>
+                  <li className="list-group-item rounded-pill mb-2 darker-border" >
+                    <input className="form-check-input me-1" type="radio" name="TipoEmpresa" value={""} id="TipoEmpresa3" />
+                    <label className="form-check-label" htmlFor="TipoEmpresa3">Ambos</label>
                   </li>
                 </ul>
               </div>

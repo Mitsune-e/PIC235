@@ -26,3 +26,7 @@
 .darker-border {
   border-color: rgba(119, 133, 135, 0.37) !important;
 }
+
+.empresa-radio-group {
+  display: inline;
+}
