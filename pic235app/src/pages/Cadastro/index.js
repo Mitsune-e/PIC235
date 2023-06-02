@@ -16,15 +16,15 @@ export const Cadastro = (props) => {
                 <h3 className="text-navy">Cadastro de Usuario</h3>
               </div>
               <div className="mb-3">
-                <label for="InputName" className="form-label text-navy">Nome completo</label>
+                <label htmlFor="InputName" className="form-label text-navy">Nome completo</label>
                 <input type="text" className="form-control round" placeholder="Nome" id="InputName" />
               </div>
               <div className="mb-3">
-                <label for="InputEmail" className="form-label text-navy">Email (este será o seu Login)</label>
+                <label htmlFor="InputEmail" className="form-label text-navy">Email (este será o seu Login)</label>
                 <input type="email" className="form-control round" placeholder="exemplo@email.com" id="InputEmail" />
               </div>
               <div className="mb-3">
-                <label for="InputTel" className="form-label text-navy">Telefone</label>
+                <label htmlFor="InputTel" className="form-label text-navy">Telefone</label>
                 <input type="text" className="form-control round" placeholder="(__)_____-____" id="InputTel" />
               </div>
               <div className="alert alert-danger">

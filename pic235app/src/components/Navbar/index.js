@@ -8,7 +8,7 @@ export const Navbar = () => {
     <div className="navbar-box">
       <nav className="navbar navbar-expand-lg bg-body-tertiary border">
         <div className="container-fluid">
-          <img class="logo img-fluid d-inline-block align-text-top navbar-brand" src="/DFBEagle.png" alt="Capital Digital" />
+          <img className="logo img-fluid d-inline-block align-text-top navbar-brand" src="/DFBEagle.png" alt="Capital Digital" />
           <div className="register-option" >
             <ul className="navbar-nav mb-2 mb-lg-0">
               <li className="nav-item">

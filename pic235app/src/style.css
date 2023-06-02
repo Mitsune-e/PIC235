@@ -36,3 +36,8 @@
     --bs-btn-disabled-border-color: #1E9FB5;
     --bs-gradient: none;
 }
+
+.list-group-item+.list-group-item {
+    /*Overwrite bootstrap rule*/
+    border-top-width: 2px !important;
+}
