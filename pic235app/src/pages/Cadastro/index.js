@@ -1,26 +1,41 @@
 import React, { useState } from "react";
+import { Navbar } from "../../components";
+import "./index.css"
 
 export const Cadastro = (props) => {
 
 
   return (
-    <div className="panel-cadastro">
-      <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    <div>
+      <Navbar />
+      <div className="mainbox">
+        <div className="form-cadastro border border-secondary-subtle">
+          <form>
+            <h2>Seu primeiro acesso!</h2>
+            <div className="col">
+              <div className="mb-1 titulo-cadastro">
+                <h3 className="text-navy">Cadastro de Usuario</h3>
+              </div>
+              <div className="mb-3">
+                <label htmlFor="InputName" className="form-label text-navy">Nome completo</label>
+                <input type="text" className="form-control round" placeholder="Nome" id="InputName" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="InputEmail" className="form-label text-navy">Email (este será o seu Login)</label>
+                <input type="email" className="form-control round" placeholder="exemplo@email.com" id="InputEmail" />
+              </div>
+              <div className="mb-3">
+                <label htmlFor="InputTel" className="form-label text-navy">Telefone</label>
+                <input type="text" className="form-control round" placeholder="(__)_____-____" id="InputTel" />
+              </div>
+              <div className="alert alert-danger">
+                Todos os campos são obrigatorios
+              </div>
+            </div >
+            <button type="submit" className="btn btn-outline-teal">Cadastre-se</button>
+          </form>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" />
-        </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
     </div>
   )
 }

@@ -6,7 +6,7 @@ export const Home = () => {
 
 
   return (
-    <div className="top-panel">
+    <div>
       <Navbar />
     </div>
   )
