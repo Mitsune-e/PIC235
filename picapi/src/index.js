@@ -1,5 +1,9 @@
-import express from 'express'; //app server
-import bodyParser from 'body-parser'; // parser for post requests
+const express = require('express'); //app server
+const bodyParser = require('body-parser'); // parser for post requests
+
+const packagejson = require("./../package.json");
+
+const controllers = require("./controllers");
 
 const app = express();
 
@@ -25,5 +29,15 @@ app.use(function (_, res, next) {
 app.use(express.static('./public')); // load UI from public folder
 app.use(bodyParser.json());
 
+app.get("/", (_, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end(`I am Alive, PIC Api Version ${packagejson.version}`);
+})
 
-export default app;
+// Creates a post under the specified route using the specified method
+app.get("/Usuario/GerarAcessoAdmin", controllers.Login.GerarAcessoAdmin);
+
+module.exports = {
+  app
+}

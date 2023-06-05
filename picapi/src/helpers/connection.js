@@ -1,24 +1,30 @@
-import mysql, { Connection, createConnection } from 'promise-mysql'; //mysql lib
+const mysql = require('promise-mysql'); //mysql lib
 
-export class Connection {
-  static Connect() {
+class Connection {
+  static async Connect() {
 
-    const connection = yield mysql.createConnection({
+    const connection = await mysql.createConnection({
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
-      password: procress.env.DB_PASS,
-      database: procress.env.DB_NAME,
-      port: procress.env.DB_PORT
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      port: process.env.DB_PORT
     })
 
     return connection;
-
   }
 
-  static Disconnect() {
-
+  static Disconnect(connection) {
+    connection.end();
   }
 
+  static async Query(connection, queryString) {
+    const results = await connection.query(queryString);
+
+    return results;
+  }
 }
 
-
+module.exports = {
+  Connection
+}
