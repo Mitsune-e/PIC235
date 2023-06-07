@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css"
+import { useNavigate } from 'react-router-dom';
+import { Session } from "../../session";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    (async () => {
+      const token = await Session.getToken();
+
+      if (!token || token === null || token === undefined) {
+        navigate("/login");
+      }
+    })();
+  }, [navigate]);
 
   return (
     <div className="navbar-box">

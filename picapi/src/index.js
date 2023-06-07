@@ -1,16 +1,18 @@
 const express = require('express'); //app server
 const bodyParser = require('body-parser'); // parser for post requests
-
+const cors = require("cors");
 const packagejson = require("./../package.json");
 
 const controllers = require("./controllers");
 
 const app = express();
 
+app.use(cors());
+
 app.use(function (_, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Acess-Control-Allow-Origin', '*')
+  // res.setHeader('Acess-Control-Allow-Origin', '*')
 
   //Request methods you wish to allow
   res.setHeader('Acess-Control-Allow-Methods', 'GET, POST, PUT, OPTIONS');
@@ -37,6 +39,7 @@ app.get("/", (_, res) => {
 
 // Creates a post under the specified route using the specified method
 app.get("/Usuario/GerarAcessoAdmin", controllers.Login.GerarAcessoAdmin);
+app.post("/Usuario/Login", controllers.Login.Login);
 
 module.exports = {
   app
