@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Cadastro, Login, CadastroEmpresa, Projeto } from "./pages";
-import { NovoProjeto } from "./pages/NovoProjeto";
+import { Home, Cadastro, Login, CadastroEmpresa, Projeto, NovoProjeto } from "./pages";
 
 
 function App() {
