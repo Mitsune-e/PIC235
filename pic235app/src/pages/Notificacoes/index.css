@@ -1,0 +1,64 @@
+.mainbox {
+    margin: auto 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .titulo-cadastro{
+    margin-top: 50px;
+  }
+
+  .painel{
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .painel #title{
+    font-family: "Arial", sans-serif;
+    font-size: 20px;
+  }
+
+  #title th{
+    border: 1px solid black;
+  }
+  
+  .painel tr, th, td{
+    border: 1px solid black;
+    padding: 8px;
+  }
+
+  .painel td{
+    width: 363px;
+    height: 60px;
+  }
+  
+  .painel th {
+    background-color: #f2f2f2;
+  }
+  
+  .painel tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .buttons{
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+  }
+
+  .painel button{
+    border-radius: 9999px;
+    padding: 5px 10px;
+    background-color: white;
+  }
+
+  .acceptButton{
+    color: #1E9FB5;
+  }
+
+  .declineButton{
+    color: #b5301e;
+  }
