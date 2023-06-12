@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Cadastro, Login, CadastroEmpresa } from "./pages";
+import { Home, Cadastro, Login, CadastroEmpresa, Notificacoes, Perfil, Credenciamento,  SelecioneEmpresa} from "./pages";
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/login" element={<Login />} />
         <Route path="/credenciamento" element={<Credenciamento />} />
+        <Route path="/selecioneEmpresa" element={<SelecioneEmpresa />} />
       </Routes>
     </div>
   )
