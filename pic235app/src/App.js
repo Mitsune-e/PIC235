@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Cadastro, Login, CadastroEmpresa } from "./pages";
+import { Home, Cadastro, Login, CadastroEmpresa,  Notificacoes, Perfil, Credenciamento} from "./pages";
 
 function App() {
   return (
