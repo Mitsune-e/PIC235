@@ -1,6 +1,8 @@
-import { Routes, Route } from "react-router-dom";
 import React from "react";
-import { Home, Cadastro, Login, CadastroEmpresa } from "./pages";
+import { Routes, Route } from "react-router-dom";
+import { Home, Cadastro, Login, CadastroEmpresa, Projeto } from "./pages";
+import { NovoProjeto } from "./pages/NovoProjeto";
+
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/cadastroEmpresa" element={<CadastroEmpresa />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/projeto" element={<Projeto />} />
+        <Route path="/novoprojeto" element={<NovoProjeto />} />
       </Routes>
     </div>
   )
