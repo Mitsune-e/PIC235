@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Home, Cadastro, Login, CadastroEmpresa, Notificacoes, Perfil, Credenciamento,  SelecioneEmpresa, Empresa} from "./pages";
+import { Home, Cadastro, Login, CadastroEmpresa, Notificacoes, Perfil, Credenciamento,  SelecioneEmpresa, Empresa, InicialPerfil} from "./pages";
 
 function App() {
   return (
@@ -14,6 +14,7 @@ function App() {
         <Route path="/credenciamento" element={<Credenciamento />} />
         <Route path="/selecioneEmpresa" element={<SelecioneEmpresa />} />
         <Route path="/empresa" element={<Empresa />} />
+        <Route path="/inicialPerfil" element={<InicialPerfil />} />
       </Routes>
     </div>
   )
