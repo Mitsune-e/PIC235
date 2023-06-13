@@ -1,0 +1,21 @@
+.mainbox {
+  margin: auto 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo-cadastro{
+  margin-top: 50px;
+}
+
+.painel{
+  margin-top: 50px;
+  text-align: center;
+}
+
+.painel #title{
+  font-family: "Arial", sans-serif;
+  font-size: 20px;
+}

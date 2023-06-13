@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Navbar } from "../../components";
-import "./index.css"
+import "./index.css";
 
 export const Cadastro = (props) => {
 
