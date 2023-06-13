@@ -1,10 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { CustosFixos } from "./pages/CustosFixos";
-import { CustosVariados } from "./pages/CustosVariados";
-import { NovoProjeto } from "./pages/NovoProjeto";
-import { Dashboard } from "./pages/Dashboard";
-import { Home, Cadastro, Login, CadastroEmpresa, Notificacoes, Perfil, Credenciamento,  SelecioneEmpresa, Empresa, Projeto, NovoProjeto,InicialPerfil} from "./pages";
+import { Home, Cadastro, Login, CadastroEmpresa, Dashboard, Notificacoes, Perfil, Credenciamento, SelecioneEmpresa, CustosVariados, CustosFixos, Empresa, Projeto, NovoProjeto, InicialPerfil } from "./pages";
 
 function App() {
   return (
@@ -19,7 +15,7 @@ function App() {
         <Route path="/projeto" element={<Projeto />} />
         <Route path="/novoprojeto" element={<NovoProjeto />} />
         <Route path="/CustosFixos" element={<CustosFixos />} />
-        <Route path="/CustosVariados" element={<CustosVariados/>}/>
+        <Route path="/CustosVariados" element={<CustosVariados />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/credenciamento" element={<Credenciamento />} />
         <Route path="/selecioneEmpresa" element={<SelecioneEmpresa />} />
