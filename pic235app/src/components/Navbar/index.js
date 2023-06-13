@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Session } from "../../session";
 
 export const Navbar = () => {
+  /* 
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -15,7 +16,7 @@ export const Navbar = () => {
       }
     })();
   }, [navigate]);
-
+*/
   return (
     <div className="navbar-box">
       <nav className="navbar navbar-expand-lg bg-body-tertiary border">
