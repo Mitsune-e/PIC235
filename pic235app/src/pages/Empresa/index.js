@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Navbar } from "../../components";
 import "./index.css"
 
-export const CadastroEmpresa = () => {
+export const Empresa = () => {
 
   return (
     <div>
@@ -12,7 +12,7 @@ export const CadastroEmpresa = () => {
           <form>
             <div className="col">
               <div className="mb-1 titulo-cadastro">
-                <h3 className="text-navy">Cadastro Empresa</h3>
+                <h3 className="text-navy">Sua empresa</h3>
               </div>
               {/* First Row */}
               <div className="form-row">
@@ -92,31 +92,20 @@ export const CadastroEmpresa = () => {
                   </li>
                 </ul>
               </div>
-               {/* Fourth Row, Radio groups, Seller or Provider */}
-              <div>
-                <label className="form-label text-navy">Líder máximo da empresa?</label>
-                <ul className="list-group">
-                  <li className="list-group-item rounded-pill mb-2 darker-border" >
-                    <input className="form-check-input me-1" type="radio" name="liderEmpresa" value={""} id="liderEmpresa1" />
-                    <label className="form-check-label" htmlFor="liderEmpresa1">Sim, sou o líder da empresa</label>
-                  </li>
-                </ul>
-                <ul className="list-group">
-                  <li className="list-group-item rounded-pill mb-2 darker-border" >
-                    <input className="form-check-input me-1" type="radio" name="representanteEmpresa" value={""} id="liderEmpresa2" />
-                    <label className="form-check-label" htmlFor="liderEmpresa2">Não, sou um representante</label>
-                  </li>
-                </ul>
-              </div>
+              
             </div>
 
              {/* Five Row, Buttons*/}
 
             <div className="sectionButtons">
-              <button class="buttons" id="returnButton">
-                <a href="/Login">Voltar</a>
-              </button>
-              <input class="buttons" id="submitButton" type="submit" value="Finalizar cadastro"></input>
+                <div className="inputSecionButtons">
+                    <div className="buttonInformation">
+                        <h4>Senha Para novos usuarios</h4>
+                        <img src="https://files.axshare.com/gsc/DAAJBO/6e/2f/5e/6e2f5e963d294914961ba8a52987fa7a/images/empresa/u48.svg?pageId=22e58762-4d59-44a5-aa46-71d82cd49c81"></img>
+                    </div>
+                    <input placeholder="Aghashfg"></input>
+                </div>
+              <input class="buttons" id="submitButton" type="submit" value="Gerar nova senha"></input>
             </div>
           </form>
         </div>

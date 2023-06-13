@@ -1,0 +1,108 @@
+.mainbox {
+    margin: auto 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .form-cadastro {
+    padding: 10px 30px 20px 30px;
+    max-width: 900px;
+  }
+  
+  .titulo-cadastro {
+    margin-left: -15px;
+  }
+  
+  .form-row {
+    display: flex;
+    margin-bottom: 14px;
+  }
+  
+  .form-control{
+    height: 25px;
+    padding-left: 10px;
+  }
+  
+  .form-input {
+    margin-right: 35px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .darker-border {
+    border-color: rgba(119, 133, 135, 0.37) !important;
+  }
+  
+  .empresa-radio-group {
+    display: inline;
+  }
+  
+  
+  .sectionButtons{
+    border-top: 1px solid #797979;
+    padding-top: 20px;
+    margin-top: 50px;
+    display: flex;
+  }
+
+  .sectionButtons img{
+    width: 15px;
+    height: 17px;
+  }
+
+  .sectionButtons h4{
+    color: #333333;
+
+  }
+
+  .inputSecionButtons{
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .buttonInformation{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .buttons{
+    height: 40px;
+    box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.35);
+    font-family: "Arial", sans-serif;
+    color: #0000aa;
+    text-align: center;
+    line-height: normal;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #returnButton{
+      width: 177px;
+      height: 40px;
+      padding: 2px 2px 2px 2px;
+      border-radius: 5px;
+      background-color: #ffffff;
+      color: #0000aa;
+    
+  }
+  
+  #submitButton{
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 5px;
+    background-color: #000080;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+    color: #ffffff;
+    text-align: center;
+    line-height: normal;
+  }

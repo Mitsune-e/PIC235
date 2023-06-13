@@ -1,0 +1,100 @@
+.mainbox {
+    margin: auto 15rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    margin-top: 50px;
+    width: 100vh;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  h3 {
+    margin-top: 100px;  
+    text-align: center;
+    color: navy;
+  }
+
+  .functions {
+    margin-top: 20px;
+  }
+
+  .functions button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: none;
+    background-color: navy;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .functions button:hover {
+    background-color: navy;
+  }
+
+  .options-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    color: navy;
+    gap: 20px;
+  }
+
+  .search-bar button{
+    border-radius: 9999px;
+    padding: 5px;
+  }
+
+  .search-bar input[type="text"] {
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    width: 200px;
+  }
+
+  .right-options {
+    display: flex;
+    align-items: center;
+  }
+
+  .right-options a {
+    margin-left: 10px;
+    text-decoration: none;
+    color: #000;
+  }
+
+  .dashboard {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .dashboard h2 {
+    margin-bottom: 10px;
+  }
+
+  .dashboard label {
+    display: block;
+    margin-bottom: 5px;
+  }

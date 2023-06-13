@@ -1,9 +1,40 @@
 import React, { useState } from "react";
 import { Navbar } from "../../components";
 import "./index.css"
+import { UsuarioService } from "../../services";
+import { Session } from "../../session";
+import { useNavigate } from 'react-router-dom';
 
 export const Login = (props) => {
+  const navigate = useNavigate();
 
+  const [Email, setEmail] = useState("");
+  const [Senha, setSenha] = useState("");
+  const [Erro, setErro] = useState("");
+
+  async function doLogin(e) {
+    e.preventDefault();
+    try {
+      const user = {
+        email: Email,
+        senha: Senha
+      };
+
+      console.log({ Email })
+      console.log({ Senha })
+      console.log({ user })
+
+      const token = await UsuarioService.Login(user);
+
+      await Session.setToken(token);
+
+      navigate("/");
+    }
+    catch (e) {
+      console.log(e)
+      setErro(e);
+    }
+  }
 
   return (
     <div>
@@ -19,14 +50,18 @@ export const Login = (props) => {
 
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label text-navy">Email</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
               </div>
               <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label text-navy">Senha</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
+                <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setSenha(e.target.value)} />
               </div>
 
-              <button type="submit" className="btn btn-outline-teal">Login</button>
+              <button type="submit" className="btn btn-outline-teal" onClick={(e) => doLogin(e)}>Login</button>
+
+              {Erro !== "" && <>
+                <div className="alert alert-danger">{Erro}</div>
+              </>}
             </div>
           </form>
         </div>

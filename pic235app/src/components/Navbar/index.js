@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.css"
+import { useNavigate } from 'react-router-dom';
+import { Session } from "../../session";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    (async () => {
+      const token = await Session.getToken();
+
+      if (!token || token === null || token === undefined) {
+        navigate("/login");
+      }
+    })();
+  }, [navigate]);
 
   return (
     <div className="navbar-box">
@@ -19,6 +31,11 @@ export const Navbar = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" aria-current="page" href="/Dashboard">Dashboard</a>
+              </li>
+              <li className="nav-item">
+                <div className="login-option">
+                  <a className="btn btn-outline-teal" href="/CadastroEmpresa">Registre sua empresa</a>
+                </div>
               </li>
               <li className="nav-item">
                 <div className="login-option">
