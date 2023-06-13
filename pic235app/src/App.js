@@ -4,8 +4,7 @@ import { CustosFixos } from "./pages/CustosFixos";
 import { CustosVariados } from "./pages/CustosVariados";
 import { NovoProjeto } from "./pages/NovoProjeto";
 import { Dashboard } from "./pages/Dashboard";
-import { Home, Cadastro, Login, CadastroEmpresa, Projeto, NovoProjeto } from "./pages";
-import { Home, Cadastro, Login, CadastroEmpresa,  Notificacoes, Perfil, Credenciamento} from "./pages";
+import { Home, Cadastro, Login, CadastroEmpresa, Notificacoes, Perfil, Credenciamento,  SelecioneEmpresa, Empresa, Projeto, NovoProjeto,InicialPerfil} from "./pages";
 
 function App() {
   return (
@@ -23,6 +22,9 @@ function App() {
         <Route path="/CustosVariados" element={<CustosVariados/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/credenciamento" element={<Credenciamento />} />
+        <Route path="/selecioneEmpresa" element={<SelecioneEmpresa />} />
+        <Route path="/empresa" element={<Empresa />} />
+        <Route path="/inicialPerfil" element={<InicialPerfil />} />
       </Routes>
     </div>
   )
