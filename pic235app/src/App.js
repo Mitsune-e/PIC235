@@ -3,6 +3,7 @@ import { Home, Cadastro, Login, CadastroEmpresa, Projeto } from "./pages";
 import { CustosFixos } from "./pages/CustosFixos";
 import { CustosVariados } from "./pages/CustosVariados";
 import { NovoProjeto } from "./pages/NovoProjeto";
+import { Dashboard } from "./pages/Dashboard";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/novoprojeto" element={<NovoProjeto />} />
         <Route path="/CustosFixos" element={<CustosFixos />} />
         <Route path="/CustosVariados" element={<CustosVariados/>}/>
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </div>
   )
