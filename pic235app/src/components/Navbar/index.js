@@ -35,11 +35,6 @@ export const Navbar = () => {
               </li>
               <li className="nav-item">
                 <div className="login-option">
-                  <a className="btn btn-outline-teal" href="/CadastroEmpresa">Registre sua empresa</a>
-                </div>
-              </li>
-              <li className="nav-item">
-                <div className="login-option">
                   <a className="btn btn-outline-teal" href="/Login">Login</a>
                 </div>
               </li>

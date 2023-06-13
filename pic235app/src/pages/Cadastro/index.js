@@ -11,7 +11,6 @@ export const Cadastro = (props) => {
       <div className="mainbox">
         <div className="form-cadastro border border-secondary-subtle">
           <form>
-            <h2>Seu primeiro acesso!</h2>
             <div className="col">
               <div className="mb-1 titulo-cadastro">
                 <h3 className="text-navy">Cadastro de Usuario</h3>
@@ -32,7 +31,7 @@ export const Cadastro = (props) => {
                 Todos os campos são obrigatorios
               </div>
             </div >
-            <button type="submit" className="btn btn-outline-teal">Cadastre-se</button>
+            <button type="submit" className="btn btn-outline-teal">Cadastrar</button>
           </form>
         </div>
       </div>
