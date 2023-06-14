@@ -2,38 +2,6 @@
     display: flex;
   }
   
-  .side-menu {
-    width: 250px;
-  }
-  
-  .side-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .side-menu ul li {
-    padding: 10px;
-    border-bottom: 1px solid #000;
-  }
-  
-  .side-menu ul li:last-child {
-    border-bottom: none;
-  }
-  
-  .side-menu ul li a {
-    display: block;
-    color: #000;
-    text-decoration: none;
-    padding: 5px;
-    border: 1px solid #000;
-  }
-  
-  .side-menu ul li a.active {
-    background-color: #000;
-    color: #fff;
-  }
-  
   .content {
     flex-grow: 1;
     padding: 20px;
