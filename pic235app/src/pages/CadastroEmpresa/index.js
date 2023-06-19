@@ -92,6 +92,31 @@ export const CadastroEmpresa = () => {
                   </li>
                 </ul>
               </div>
+              {/* Fourth Row, Radio groups, Seller or Provider */}
+              <div>
+                <label className="form-label text-navy">Líder máximo da empresa?</label>
+                <ul className="list-group">
+                  <li className="list-group-item rounded-pill mb-2 darker-border" >
+                    <input className="form-check-input me-1" type="radio" name="liderEmpresa" value={""} id="liderEmpresa1" />
+                    <label className="form-check-label" htmlFor="liderEmpresa1">Sim, sou o líder da empresa</label>
+                  </li>
+                </ul>
+                <ul className="list-group">
+                  <li className="list-group-item rounded-pill mb-2 darker-border" >
+                    <input className="form-check-input me-1" type="radio" name="representanteEmpresa" value={""} id="liderEmpresa2" />
+                    <label className="form-check-label" htmlFor="liderEmpresa2">Não, sou um representante</label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            {/* Five Row, Buttons*/}
+
+            <div className="sectionButtons justify-content-evenly">
+              <button className="buttons" id="returnButton">
+                <a href="/Login">Voltar</a>
+              </button>
+              <button className="buttons" id="submitButton" type="submit">Finalizar cadastro</button>
             </div>
           </form>
         </div>
