@@ -4,12 +4,13 @@ import "./index.css"
 import { UsuarioService } from "../../services";
 import { Session } from "../../session";
 import { useNavigate } from 'react-router-dom';
+import UseInput from "../../hooks/UseInput";
 
 export const Login = (props) => {
   const navigate = useNavigate();
 
   const [Email, setEmail] = useState("");
-  const [Senha, setSenha] = useState("");
+  const [Senha, InputSenha] = UseInput("Senha", "senha", "password")
   const [Erro, setErro] = useState("");
 
   async function doLogin(e) {
@@ -52,11 +53,7 @@ export const Login = (props) => {
                 <label htmlFor="exampleInputEmail1" className="form-label text-navy">Email</label>
                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
               </div>
-              <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label text-navy">Senha</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setSenha(e.target.value)} />
-              </div>
-
+              {InputSenha}
               <button type="submit" className="btn btn-outline-teal" onClick={(e) => doLogin(e)}>Login</button>
 
               {Erro !== "" && <>
