@@ -21,6 +21,8 @@ async function Login(req, res) {
         senha: "123"
       }
     */
+    const user = req.body;
+
     const select = `SELECT U.COD_USUARIO, U.EMAIL_USUARIO, U.TEL_USUARIO, U.SNA_USUARIO, T.COD_TPO_USUARIO FROM TB_USUARIO U INNER JOIN TD_TPO_USUARIO T WHERE U.FK_TPO_USUARIO = T.PK_TPO_USUARIO AND U.EMAIL_USUARIO = '${user.email}'`;
     // console.log({ select });
     result = await Connection.Query(connection, select);
@@ -36,6 +38,7 @@ async function Login(req, res) {
     statusCode = isLogged ? 200 : 403;
 
     if (isLogged) {
+      console.log(process.env.TOKEN_KEY);
       token = jwt.sign(
         JSON.stringify({
           CodigoUsuario: userEncontrado.COD_USUARIO,
@@ -43,6 +46,7 @@ async function Login(req, res) {
         }),
         process.env.TOKEN_KEY
       );
+      console.log(token)
     }
     else {
       error = ("Usuário ou senha incorretos.")
@@ -85,7 +89,7 @@ async function GerarAcessoAdmin(req, res) {
     // Generates a password has fdor string "123", check how to generate the password for real later
     const senha = await bcrypt.hash("123", SALT_ROUNDS);
 
-    const resultCodigo = await Connection.Query(connection, "SELECT MAX(PK_USUARIO) AS 'CODIGO' FROM TB_USUARIO");
+    const resultCodigo = await Connection.Query(connection, "SELECT MAX(COD_USUARIO) AS 'CODIGO' FROM TB_USUARIO");
     let codigoUsuario = 0;
 
     if (resultCodigo.rowsAffected > 0)

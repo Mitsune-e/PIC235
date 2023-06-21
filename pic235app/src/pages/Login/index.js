@@ -4,7 +4,7 @@ import "./index.css"
 import { UsuarioService } from "../../services";
 import { Session } from "../../session";
 import { useNavigate } from 'react-router-dom';
-import UseInput from "../../hooks/UseInput";
+import { UseInput } from "../../hooks";
 
 export const Login = (props) => {
   const navigate = useNavigate();
