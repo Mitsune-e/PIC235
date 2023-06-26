@@ -41,9 +41,9 @@ app.get("/", (_, res) => {
 app.get("/Usuario/GerarAcessoAdmin", controllers.Login.GerarAcessoAdmin);
 app.post("/Usuario/Login", controllers.Login.Login);
 
-app.get("/Empresa/BuscarTiposCliente", controllers.Empresa.BuscarTipoCliente);
-app.get("/Empresa/BuscarTiposServico", controllers.Empresa.BuscarTipoServico);
-app.post("/Empresa/Cadastrar", /*controllers.Auth.ValidarJWT,*/ controllers.Empresa.Cadastrar);
+app.get("/Empresa/BuscarTiposCliente", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarTipoCliente);
+app.get("/Empresa/BuscarTiposServico", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarTipoServico);
+app.post("/Empresa/Cadastrar", controllers.Auth.ValidarJWT, controllers.Empresa.Cadastrar);
 
 module.exports = {
   app

@@ -38,15 +38,13 @@ async function Login(req, res) {
     statusCode = isLogged ? 200 : 403;
 
     if (isLogged) {
-      console.log(process.env.TOKEN_KEY);
       token = jwt.sign(
-        JSON.stringify({
+        {
           CodigoUsuario: userEncontrado.COD_USUARIO,
           TipoUsuario: userEncontrado.COD_TPO_USUARIO,
-        }),
+        },
         process.env.TOKEN_KEY
       );
-      console.log(token)
     }
     else {
       error = ("Usuário ou senha incorretos.")

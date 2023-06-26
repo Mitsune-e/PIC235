@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "../../components";
 import "./index.css"
 import { UsuarioService } from "../../services";
@@ -12,6 +12,17 @@ export const Login = (props) => {
   const [Email, InputEmail] = UseInput("Email", "email", "email");
   const [Senha, InputSenha] = UseInput("Senha", "senha", "password");
   const [Erro, setErro] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await Session.clear();
+      }
+      catch (e) {
+        setErro(e);
+      }
+    })();
+  }, [navigate]);
 
   async function doLogin(e) {
     e.preventDefault();
