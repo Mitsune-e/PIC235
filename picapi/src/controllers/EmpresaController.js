@@ -1,5 +1,7 @@
-
+const bcrypt = require("bcrypt");
 const Connection = (require("../helpers/connection")).Connection;
+
+const SALT_ROUNDS = Number(process.env.SALT_ROUNDS);
 
 async function Cadastrar(req, res) {
   let error = null;
@@ -31,6 +33,36 @@ async function Cadastrar(req, res) {
       statusCode = 400;
       error = "Houve um erro ao criar a empresa. Favor tente novamente mais tarde.";
     }
+
+    // Generates a password has fdor string "123", check how to generate the password for real later
+    const senha = await bcrypt.hash("123", SALT_ROUNDS);
+
+    const resultCodigoUsuario = await Connection.Query(connection, "SELECT MAX(COD_USUARIO) AS 'CODIGO' FROM TB_USUARIO");
+    let codigoUsuario = 0;
+
+    if (resultCodigoUsuario.length > 0)
+      codigoUsuario = resultCodigoUsuario[0].CODIGO;
+
+    codigoUsuario = codigoUsuario + 1;
+
+    // Runs the insert statement
+    const insertUsuario = `INSERT INTO TB_USUARIO (FK_TPO_USUARIO, COD_USUARIO, TEL_USUARIO, EMAIL_USUARIO, SNA_USUARIO) VALUES (3, '${codigoUsuario}', '${empresa.telefone}', '${empresa.email}', '${senha}')`;
+
+    result = await Connection.Query(connection, insertUsuario);
+
+    if (result === null) {
+      statusCode = 400;
+      error = "Houve um erro ao criar o usuário da empresa. Favor tente novamente mais tarde.";
+    }
+
+    const insertTaUsuarioEmp = `INSERT INTO TA_USUARIO_EMP (FK_USUARIO, FK_EMPRESA, FK_FUNCOES) VALUES ((SELECT PK_USUARIO FROM TB_USUARIO WHERE COD_USUARIO = ${codigoUsuario}), (SELECT PK_EMPRESA FROM TB_EMPRESA WHERE COD_EMPRESA = ${codigoEmpresa}), 1)`
+
+    result = await Connection.Query(connection, insertTaUsuarioEmp);
+
+    if (result === null) {
+      statusCode = 400;
+      error = "Houve um erro ao vincular o usuário da empresa. Favor tente novamente mais tarde.";
+    }
   }
   catch (e) {
     error = e.toString();
@@ -38,7 +70,7 @@ async function Cadastrar(req, res) {
   }
   finally {
     res.writeHead(statusCode, { "Content-Type": "application/json" });
-    if (result !== null) {
+    if (error === null) {
       return res.end(JSON.stringify("Empresa criada com sucesso."))
     }
     else {
