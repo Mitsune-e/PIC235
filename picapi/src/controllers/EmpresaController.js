@@ -147,8 +147,45 @@ async function BuscarTipoServico(_, res) {
   }
 }
 
+async function BuscarDados(_, res) {
+  let error = null;
+  let result = null;
+  let statusCode = 200;
+  let connection;
+
+  try {
+    connection = await Connection.Connect();
+
+    const user = req.user;
+
+    const select = `SELECT NOME_FAN_EMPRESA, RAZAO_EMPRESA, CNPJ_EMPRESA, EMAIL_EMPRESA, TEL_EMPRESA, ENDER_EMPRESA, INSCR_EMPRESA, TD_TPO_CLIENTE_PK_TPO_CLIENTE, TD_TPO_SERVICO_PK_TPO_SERVICO FROM TB_EMPRESA E INNER JOIN TD_TPO_CLIENTE C INNER JOIN TD_TPO_SERVICO S INNER JOIN TA_USUARIO_EMP UE INNER JOIN TB_USUARIO U WHERE E.TD_TPO_CLIENTE_PK_TPO_CLIENTE = C.PK_TPO_CLIENTE AND E.TD_TPO_SERVICO_PK_TPO_SERVICO = S.PK_TPO_SERVICO AND E.PK_EMPRESA = UE.FK_EMPRESA AND U.PK_USUARIO = UE.FK_USUARIO AND U.COD_USUARIO = ${user.codigoUsuario}`;
+
+    result = await Connection.Query(connection, select);
+
+    if (result.length === 0) {
+      statusCode = 400;
+      error = ("Nenhum dado da sua empresa cadastrado.");
+      return;
+    }
+  }
+  catch (e) {
+    error = e.toString();
+    statusCode = 500;
+  }
+  finally {
+    res.writeHead(statusCode, { "Content-Type": "application/json" });
+    if (result.length > 0) {
+      return res.end(JSON.stringify(result))
+    }
+    else {
+      return res.end(error)
+    }
+  }
+}
+
 module.exports = {
   Cadastrar,
   BuscarTipoCliente,
-  BuscarTipoServico
+  BuscarTipoServico,
+  BuscarDados
 }

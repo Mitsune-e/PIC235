@@ -43,6 +43,7 @@ app.post("/Usuario/Login", controllers.Login.Login);
 
 app.get("/Empresa/BuscarTiposCliente", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarTipoCliente);
 app.get("/Empresa/BuscarTiposServico", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarTipoServico);
+app.get("/Empresa/Buscar", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarDados);
 app.post("/Empresa/Cadastrar", controllers.Auth.ValidarJWT, controllers.Empresa.Cadastrar);
 
 module.exports = {
