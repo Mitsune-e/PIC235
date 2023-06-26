@@ -44,7 +44,7 @@ export class BaseService {
     responseType = ResponseType.Normal
   ) {
     const token = await this.GetToken(`@${config.appName}:token`);
-    console.log({ requestType })
+
     const options = {
       method: requestType,
       url: config.apiUrl + url,

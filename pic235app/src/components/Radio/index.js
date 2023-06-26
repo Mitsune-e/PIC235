@@ -10,9 +10,10 @@ export const Radio = (props) => {
           type="radio"
           name={props.name}
           value={props.value}
-          checked={props.value === props.checkedValue}
+          checked={`${props.value}` === `${props.checkedValue}`}
           onChange={(e) => props.onChange(e.target.value)}
           id={props.id}
+          disabled={props.disabled}
         />
 
         <label className="form-check-label" htmlFor={props.id}>{props.title}</label>

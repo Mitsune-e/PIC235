@@ -35,6 +35,7 @@ export const CadastroEmpresa = () => {
   const [LiderEmpresa, LiderEmpresaRadio] = UseRadio(tiposUsuario, "Líder máximo da empresa?", "lider-empresa", "title", "key")
 
   useEffect(() => {
+    //useEffect to get cliente types from database
     (async () => {
       try {
         const tiposCliente = await EmpresaService.BuscarTiposCliente();

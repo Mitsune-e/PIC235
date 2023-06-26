@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Radio } from "../../components";
 
-export function UseRadio(data, title, name, titleName, valueName) {
+export function UseRadio(data, title, name, titleName, valueName, selectValue = null) {
   const [Value, setValue] = useState("");
 
   const component = (
@@ -14,11 +14,12 @@ export function UseRadio(data, title, name, titleName, valueName) {
               <Radio
                 key={i}
                 title={x[titleName]}
-                checkedValue={Value}
+                checkedValue={selectValue === null ? Value : `${selectValue}`}
                 name={name}
                 id={`${name}-${i + 1}`}
                 value={`${x[valueName]}`}
                 onChange={setValue}
+                disabled={selectValue !== null}
               />
             )
           })}

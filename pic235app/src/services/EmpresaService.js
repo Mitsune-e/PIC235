@@ -11,6 +11,9 @@ class Empresa extends ReactService.BaseService {
   BuscarTiposServico = () =>
     this.CreateRequest(ReactService.RequestType.GET, `BuscarTiposServico`);
 
+  Buscar = () =>
+    this.CreateRequest(ReactService.RequestType.GET, 'Buscar');
+
   Cadastrar = (dadosEmpresa) =>
     this.CreateRequest(ReactService.RequestType.POST, `Cadastrar`, dadosEmpresa);
 }
