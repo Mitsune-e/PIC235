@@ -39,6 +39,8 @@ app.get("/", (_, res) => {
 
 // Creates a post under the specified route using the specified method
 app.get("/Usuario/GerarAcessoAdmin", controllers.Login.GerarAcessoAdmin);
+app.post("/Usuario/CriarAcesso", controllers.Auth.ValidarJWT, controllers.Login.GerarAcesso);
+app.get("/Usuario/BuscarTiposUsuario", controllers.Auth.ValidarJWT, controllers.Login.BuscarTipoUsuario);
 app.post("/Usuario/Login", controllers.Login.Login);
 
 app.get("/Empresa/BuscarTiposCliente", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarTipoCliente);
