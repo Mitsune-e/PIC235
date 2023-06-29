@@ -1,114 +1,117 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Navbar } from "../../components";
 import "./index.css"
+import { UseRadio, UseReadOnlyInput } from "../../hooks";
+import { EmpresaService } from "../../services";
 
 export const Empresa = () => {
+
+  const [Erro, setErro] = useState("");
+
+  const [setNomeFantasia, NomeFantasiaInput] = UseReadOnlyInput("Nome Fantasia", "nome-fantasia");
+  const [setRazaoSocial, RazaoSocialInput] = UseReadOnlyInput("Razão Social", "razao-social")
+  const [setCNPJ, CNPJinput] = UseReadOnlyInput("CNPJ", "input-cnpj");
+  const [setEmail, EmailInput] = UseReadOnlyInput("Email da Empresa", "email-empresa");
+  const [setCompanyTel, CompanyTelInput] = UseReadOnlyInput("Telefone", "telefone-empresa");
+  const [setEndereco, EnderecoInput] = UseReadOnlyInput("Endereço", "endereco-input");
+  const [setInscricao, InscricaoInput] = UseReadOnlyInput("Inscricao", "inscricao-input");
+
+  const [TiposCliente, setTiposCliente] = useState([]);
+  const [TipoCliente, setTipoCliente] = useState("0");
+  const [TiposServico, setTiposServico] = useState([]);
+  const [TipoServico, setTipoServico] = useState("0");
+
+  const [, TipoClienteRadio] = UseRadio(TiposCliente, "Tipo de cliente mais comum de sua empresa:", "tipo-cliente", "TEXTO_TPO_CLIENTE", "COD_TPO_CLIENTE", TipoCliente)
+  const [, TipoServicoRadio] = UseRadio(TiposServico, "Tipo de serviço oferecido:", "tipo-empresa", "DESC_TPO_SERVICO", "COD_TPO_SERVICO", TipoServico);
+
+  useEffect(() => {
+    //useEffect to get cliente types from database
+    (async () => {
+      try {
+        const tipoCliente = await EmpresaService.BuscarTiposCliente();
+        setTiposCliente(tipoCliente);
+        const tiposServicoce = await EmpresaService.BuscarTiposServico();
+        setTiposServico(tiposServicoce);
+
+        const dadosEmpresa = await EmpresaService.Buscar();
+
+        setNomeFantasia(dadosEmpresa.NOME_FAN_EMPRESA);
+        setRazaoSocial(dadosEmpresa.RAZAO_EMPRESA);
+        setCNPJ(dadosEmpresa.CNPJ_EMPRESA);
+        setEmail(dadosEmpresa.EMAIL_EMPRESA);
+        setCompanyTel(dadosEmpresa.TEL_EMPRESA);
+        setEndereco(dadosEmpresa.ENDER_EMPRESA);
+        setInscricao(dadosEmpresa.INSCR_EMPRESA)
+        setTipoCliente(dadosEmpresa.TD_TPO_CLIENTE_PK_TPO_CLIENTE);
+        setTipoServico(dadosEmpresa.TD_TPO_SERVICO_PK_TPO_SERVICO);
+      }
+      catch (e) {
+        setErro(e);
+      }
+    })()
+  }, []);
+
 
   return (
     <div>
       <Navbar />
       <div className="mainbox">
-        <div className="form-cadastro border border-secondary-subtle">
-          <form>
-            <div className="col">
-              <div className="mb-1 titulo-cadastro">
-                <h3 className="text-navy">Sua empresa</h3>
-              </div>
-              {/* First Row */}
-              <div className="form-row">
-                <div className="mb-3 form-input">
-                  <label htmlFor="InputNameCompany" className="form-label text-navy">Nome Fantasia</label>
-                  <input type="text" className="form-control round" placeholder="Nome Fantasia" id="InputInputNameCompany" />
-                </div>
+        {Erro !== "" && <div className="alert alert-danger">{Erro}</div>}
 
-                <div className="mb-3 form-input">
-                  <label htmlFor="InputRazao" className="form-label text-navy">Razão Social</label>
-                  <input type="text" className="form-control round" placeholder="RazaoSocial" id="InputRazao" />
+        {Erro === "" && <>
+          <div className="form-cadastro border border-secondary-subtle">
+            <form>
+              <div className="col">
+                <div className="mb-1 titulo-cadastro">
+                  <h3 className="text-navy">Sua empresa</h3>
                 </div>
-                <div className="mb-3 form-input">
-                  <label htmlFor="InputCNPJ" className="form-label text-navy">CNPJ</label>
-                  <input type="text" className="form-control round" placeholder="CNPJ" id="InputCNPJ" />
+                {/* First Row */}
+                <div className="form-row">
+                  {NomeFantasiaInput}
+
+                  {RazaoSocialInput}
+
+                  {CNPJinput}
                 </div>
-              </div>
-              {/* Second Row */}
-              <div className="form-row">
-                <div className="mb-3 form-input">
-                  <label htmlFor="InputEmail" className="form-label text-navy">Email da Empresa</label>
-                  <input type="email" className="form-control round" placeholder="Email" id="InputEmail" />
+                {/* Second Row */}
+                <div className="form-row">
+                  {EmailInput}
+
+                  {CompanyTelInput}
                 </div>
-                <div className="mb-3 form-input">
-                  <label htmlFor="InputCompanyTel" className="form-label text-navy">Telefone</label>
-                  <input type="text" className="form-control round" placeholder="(__)_____-____" id="InputCompanyTel" />
-                </div>
-              </div>
-              {/* Third Row */}
-              <div className="form-row">
-                <div className="mb-3 form-input">
-                  <label htmlFor="InputEndreco" className="form-label text-navy">Endereço</label>
-                  <input type="text" className="form-control round" placeholder="Endereço" id="InputEndreco" />
-                </div>
-                <div className="mb-3 form-input">
+                {/* Third Row */}
+                <div className="form-row">
+                  {EnderecoInput}
+                  {/* <div className="mb-3 form-input">
                   <label htmlFor="InputInscricao" className="form-label text-navy">Inscrição Estadual ou Distrital</label>
                   <input type="text" className="form-control round" placeholder="Inscrição" id="InputInscricao" />
+                </div> */}
+                  {InscricaoInput}
                 </div>
-              </div>
-              {/* Fourth Row, Radio groups, Client Types */}
-              <div>
-                <label className="form-label text-navy">Indique o tipo de cliente mais comum de sua empresa:</label>
-                <ul className="list-group">
-                  <li className="list-group-item rounded-pill mb-2 darker-border">
-                    <input className="form-check-input me-1" type="radio" name="TipoCliente" value={""} id="TipoCliente1" />
-                    <label className="form-check-label" htmlFor="TipoCliente1">Pessoas Jurídicas (em grande quantidade; acima de 200 clientes)</label>
-                  </li>
-                  <li className="list-group-item rounded-pill mb-2 darker-border">
-                    <input className="form-check-input me-1" type="radio" name="TipoCliente" value={""} id="TipoCliente2" />
-                    <label className="form-check-label" htmlFor="TipoCliente2">Pessoas Jurídicas (em pequena quantidade; até 200 clientes)</label>
-                  </li>
-                  <li className="list-group-item rounded-pill mb-2 darker-border">
-                    <input className="form-check-input me-1" type="radio" name="TipoCliente" value={""} id="TipoCliente3" />
-                    <label className="form-check-label" htmlFor="TipoCliente3">Pessoas Físicas (em grande quantidade; acima de 200 clientes)</label>
-                  </li>
-                  <li className="list-group-item rounded-pill mb-2 darker-border">
-                    <input className="form-check-input me-1" type="radio" name="TipoCliente" value={""} id="TipoCliente4" />
-                    <label className="form-check-label" htmlFor="TipoCliente4">Pessoas Físicas (em pequena quantidade; até de 200 clientes)</label>
-                  </li>
-                </ul>
-              </div>
-              {/* Fourth Row, Radio groups, Seller or Provider */}
-              <div>
-                <label className="form-label text-navy">Você vende produto ou presta serviço:</label>
-                <ul className="list-group">
-                  <li className="list-group-item rounded-pill mb-2 darker-border" >
-                    <input className="form-check-input me-1" type="radio" name="TipoEmpresa" value={""} id="TipoEmpresa1" />
-                    <label className="form-check-label" htmlFor="TipoEmpresa1">Produto</label>
-                  </li>
-                  <li className="list-group-item rounded-pill mb-2 darker-border" >
-                    <input className="form-check-input me-1" type="radio" name="TipoEmpresa" value={""} id="TipoEmpresa2" />
-                    <label className="form-check-label" htmlFor="TipoEmpresa2">Serviço</label>
-                  </li>
-                  <li className="list-group-item rounded-pill mb-2 darker-border" >
-                    <input className="form-check-input me-1" type="radio" name="TipoEmpresa" value={""} id="TipoEmpresa3" />
-                    <label className="form-check-label" htmlFor="TipoEmpresa3">Ambos</label>
-                  </li>
-                </ul>
-              </div>
-              
-            </div>
+                {/* Fourth Row, Radio groups, Client Types */}
+                {TipoClienteRadio}
 
-             {/* Five Row, Buttons*/}
+                {/* Fourth Row, Radio groups, Seller or Provider */}
+                {TipoServicoRadio}
 
-            <div className="sectionButtons">
+              </div>
+
+              {/* Five Row, Buttons*/}
+
+              <div className="sectionButtons">
                 <div className="inputSecionButtons">
-                    <div className="buttonInformation">
-                        <h4>Senha Para novos usuarios</h4>
-                        <img src="https://files.axshare.com/gsc/DAAJBO/6e/2f/5e/6e2f5e963d294914961ba8a52987fa7a/images/empresa/u48.svg?pageId=22e58762-4d59-44a5-aa46-71d82cd49c81"></img>
-                    </div>
-                    <input placeholder="Aghashfg"></input>
+                  <div className="buttonInformation">
+                    <h4>Senha Para novos usuarios</h4>
+                    <img src="https://files.axshare.com/gsc/DAAJBO/6e/2f/5e/6e2f5e963d294914961ba8a52987fa7a/images/empresa/u48.svg?pageId=22e58762-4d59-44a5-aa46-71d82cd49c81"></img>
+                  </div>
+                  <input placeholder="Aghashfg"></input>
                 </div>
-              <input class="buttons" id="submitButton" type="submit" value="Gerar nova senha"></input>
-            </div>
-          </form>
-        </div>
+                <input className="buttons" id="submitButton" type="submit" value="Gerar nova senha"></input>
+              </div>
+            </form>
+          </div>
+        </>}
+
       </div >
     </div >
 

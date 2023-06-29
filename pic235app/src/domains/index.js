@@ -1,0 +1,1 @@
+export * from "./DMN_FUNCOES";

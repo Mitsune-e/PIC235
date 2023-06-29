@@ -38,8 +38,19 @@ app.get("/", (_, res) => {
 })
 
 // Creates a post under the specified route using the specified method
-app.get("/Usuario/GerarAcessoAdmin", controllers.Login.GerarAcessoAdmin);
+//app.get("/Usuario/GerarAcessoAdmin", controllers.Login.GerarAcessoAdmin);
+app.post("/Usuario/Atualizar", [controllers.Auth.ValidarJWT, controllers.Auth.ValidarAcessoLiderMaximo], controllers.Login.Atualizar);
+app.post("/Usuario/CriarAcesso", [controllers.Auth.ValidarJWT, controllers.Auth.ValidarAcessoLiderMaximo], controllers.Login.GerarAcesso);
+app.get("/Usuario/BuscarFuncoesUsuario", controllers.Auth.ValidarJWT, controllers.Login.BuscarFuncoesUsuario);
+app.get("/Usuario/BuscarTodasFuncoesUsuario", controllers.Auth.ValidarJWT, controllers.Login.BuscarTodasFuncoesUsuario);
+app.get("/Usuario/BuscarTiposUsuario", controllers.Auth.ValidarJWT, controllers.Login.BuscarTiposUsuario);
 app.post("/Usuario/Login", controllers.Login.Login);
+app.get("/Usuario/BuscarUsuariosPorEmpresa", controllers.Auth.ValidarJWT, controllers.Login.BuscarUsuariosPorEmpresa);
+
+app.get("/Empresa/BuscarTiposCliente", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarTipoCliente);
+app.get("/Empresa/BuscarTiposServico", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarTipoServico);
+app.get("/Empresa/Buscar", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarDados);
+app.post("/Empresa/Cadastrar", [controllers.Auth.ValidarJWT, controllers.Auth.ValidarAcessoAdmin], controllers.Empresa.Cadastrar);
 
 module.exports = {
   app

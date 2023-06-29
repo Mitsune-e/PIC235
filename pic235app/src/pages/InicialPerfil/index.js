@@ -7,11 +7,11 @@ export const InicialPerfil = (props) => {
     <div>
       <Navbar />
       <div className="mainbox">
-        
+
         <div className="mb-1 titulo-cadastro">
           <h3 className="text-navy">Perfils</h3>
         </div>
-        <div class="painel">
+        <div className="painel">
           <table>
             <tr id="title">
               <th>Nome</th>

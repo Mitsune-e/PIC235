@@ -1,16 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar } from "../../components";
 import "./index.css"
 import { UsuarioService } from "../../services";
 import { Session } from "../../session";
 import { useNavigate } from 'react-router-dom';
+import { UseInput } from "../../hooks";
 
 export const Login = (props) => {
   const navigate = useNavigate();
 
-  const [Email, setEmail] = useState("");
-  const [Senha, setSenha] = useState("");
+  const [Email, InputEmail] = UseInput("Email", "email", "email");
+  const [Senha, InputSenha] = UseInput("Senha", "senha", "password");
   const [Erro, setErro] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await Session.clear();
+      }
+      catch (e) {
+        setErro(e);
+      }
+    })();
+  }, [navigate]);
 
   async function doLogin(e) {
     e.preventDefault();
@@ -19,10 +31,6 @@ export const Login = (props) => {
         email: Email,
         senha: Senha
       };
-
-      console.log({ Email })
-      console.log({ Senha })
-      console.log({ user })
 
       const token = await UsuarioService.Login(user);
 
@@ -47,18 +55,9 @@ export const Login = (props) => {
               <div className="mb-1 titulo-login">
                 <h3 className="text-navy">Login de Usuario</h3>
               </div>
-
-              <div className="mb-3">
-                <label htmlFor="exampleInputEmail1" className="form-label text-navy">Email</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={(e) => setEmail(e.target.value)} />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label text-navy">Senha</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" onChange={(e) => setSenha(e.target.value)} />
-              </div>
-
+              {InputEmail}
+              {InputSenha}
               <button type="submit" className="btn btn-outline-teal" onClick={(e) => doLogin(e)}>Login</button>
-
               {Erro !== "" && <>
                 <div className="alert alert-danger">{Erro}</div>
               </>}
