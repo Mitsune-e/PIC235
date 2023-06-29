@@ -17,7 +17,7 @@ export const Cadastro = () => {
     //useEffect to get user types from database
     (async () => {
       try {
-        const tiposUsuario = await UsuarioService.BuscarTiposUsuario();
+        const tiposUsuario = await UsuarioService.BuscarFuncoesUsuario();
         setTiposUsuario(tiposUsuario);
       }
       catch (e) {

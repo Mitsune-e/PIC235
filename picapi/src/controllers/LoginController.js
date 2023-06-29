@@ -206,7 +206,7 @@ async function GerarAcesso(req, res) {
   }
 }
 
-async function BuscarTipoUsuario(_, res) {
+async function BuscarFuncoesUsuario(_, res) {
   let error = null;
   let result = null;
   let statusCode = 200;
@@ -221,7 +221,7 @@ async function BuscarTipoUsuario(_, res) {
 
     if (result.length === 0) {
       statusCode = 400;
-      error = ("Nenhum tipo de usuário cadastrado.");
+      error = ("Nenhuma função de usuário cadastrado.");
       return;
     }
   }
@@ -240,9 +240,173 @@ async function BuscarTipoUsuario(_, res) {
   }
 }
 
+async function BuscarTodasFuncoesUsuario(_, res) {
+  let error = null;
+  let result = null;
+  let statusCode = 200;
+  let connection;
+
+  try {
+    connection = await Connection.Connect();
+
+    const select = "SELECT COD_FUNCOES, DESC_FUNCOES FROM TD_FUNCOES";
+
+    result = await Connection.Query(connection, select);
+
+    if (result.length === 0) {
+      statusCode = 400;
+      error = ("Nenhuma função de usuário cadastrado.");
+      return;
+    }
+  }
+  catch (e) {
+    error = e.toString();
+    statusCode = 500;
+  }
+  finally {
+    res.writeHead(statusCode, { "Content-Type": "application/json" });
+    if (result.length > 0) {
+      return res.end(JSON.stringify(result))
+    }
+    else {
+      return res.end(error)
+    }
+  }
+}
+
+async function BuscarTiposUsuario(_, res) {
+  let error = null;
+  let result = null;
+  let statusCode = 200;
+  let connection;
+
+  try {
+    connection = await Connection.Connect();
+
+    const select = "SELECT COD_TPO_USUARIO, DESC_TPO_USUARIO FROM TD_TPO_USUARIO WHERE COD_TPO_USUARIO <> 3";
+
+    result = await Connection.Query(connection, select);
+
+    if (result.length === 0) {
+      statusCode = 400;
+      error = ("Nenhuma função de usuário cadastrado.");
+      return;
+    }
+  }
+  catch (e) {
+    error = e.toString();
+    statusCode = 500;
+  }
+  finally {
+    res.writeHead(statusCode, { "Content-Type": "application/json" });
+    if (result.length > 0) {
+      return res.end(JSON.stringify(result))
+    }
+    else {
+      return res.end(error)
+    }
+  }
+}
+
+async function BuscarUsuariosPorEmpresa(req, res) {
+  let error = null;
+  let result = null;
+  let statusCode = 200;
+  let connection;
+
+  try {
+    const codigoUsuarioAtual = req.user.CodigoUsuario;
+
+    connection = await Connection.Connect();
+
+    const select = `SELECT EMAIL_USUARIO, TEL_USUARIO, FK_FUNCOES, FK_TPO_USUARIO, COD_USUARIO FROM TB_USUARIO U INNER JOIN TA_USUARIO_EMP UE WHERE UE.FK_USUARIO = U.PK_USUARIO AND UE.FK_EMPRESA = (SELECT FK_EMPRESA FROM TA_USUARIO_EMP UE2 INNER JOIN TB_USUARIO U2 WHERE UE2.FK_USUARIO = U2.PK_USUARIO AND U2.COD_USUARIO = ${codigoUsuarioAtual}) ORDER BY FK_FUNCOES, COD_USUARIO`;
+
+    result = await Connection.Query(connection, select);
+
+    if (result.length === 0) {
+      statusCode = 400;
+      error = ("Nenhum usuário cadastrado na sua empresa.");
+      return;
+    }
+  }
+  catch (e) {
+    error = e.toString();
+    statusCode = 500;
+  }
+  finally {
+    res.writeHead(statusCode, { "Content-Type": "application/json" });
+    if (result.length > 0) {
+      return res.end(JSON.stringify(result))
+    }
+    else {
+      return res.end(error)
+    }
+  }
+}
+
+async function Atualizar(req, res) {
+  let error = null;
+  let result = null;
+  let statusCode = 200;
+  let connection;
+
+  try {
+    // Connects to the DB
+    connection = await Connection.Connect();
+    // Get the user data from the HTTP query
+    const condigoFuncao = req.body.condigoFuncao;
+    const codigoTipoUsuario = req.body.codigoTipoUsuario;
+    const codigoUsuario = req.body.codigoUsuario;
+
+    // Runs the update statement
+    const updateTipoUsuario = `UPDATE TB_USUARIO SET FK_TPO_USUARIO = ${codigoTipoUsuario} WHERE COD_USUARIO = ${codigoUsuario}`;
+    // console.log(insert);
+    result = await Connection.Query(connection, updateTipoUsuario);
+
+    // Checks if the update was successful
+    if (result === null) {
+      statusCode = 400;
+      error = "Houve um erro ao atualizar o tipo do usuário. Favor tente novamente mais tarde.";
+    }
+
+    const updateFuncaoUsuario = `UPDATE TA_USUARIO_EMP SET FK_FUNCOES = ${condigoFuncao} WHERE FK_USUARIO = (SELECT PK_USUARIO FROM TB_USUARIO WHERE COD_USUARIO = ${codigoUsuario})`;
+
+    result = await Connection.Query(connection, updateFuncaoUsuario);
+
+    if (updateFuncaoUsuario === null) {
+      statusCode = 400;
+      error = "Houve um erro ao atualizar a função do usuário. Favor tente novamente mais tarde.";
+    }
+  }
+  catch (e) {
+    error = e.toString();
+    statusCode = 500;
+  }
+  // Finally statements runs after both try and catch blocks regardless
+  finally {
+    // Closes the DB connection
+    // Connection.Connection.Disconnect(connection);
+
+    // Writes the response head
+    res.writeHead(statusCode, { "Content-Type": "application/json" });
+    // if there is a result that means the insert was successful, write back to the user
+    if (error === null) {
+      return res.end(JSON.stringify("Usuário atualizado com sucesso."));
+    }
+    // reports errors if any happens
+    else {
+      return res.end(error)
+    }
+  }
+}
+
 module.exports = {
   Login,
+  Atualizar,
   GerarAcesso,
   GerarAcessoAdmin,
-  BuscarTipoUsuario
+  BuscarFuncoesUsuario,
+  BuscarTodasFuncoesUsuario,
+  BuscarTiposUsuario,
+  BuscarUsuariosPorEmpresa
 };

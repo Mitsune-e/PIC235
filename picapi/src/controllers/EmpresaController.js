@@ -46,7 +46,7 @@ async function Cadastrar(req, res) {
     codigoUsuario = codigoUsuario + 1;
 
     // Runs the insert statement
-    const insertUsuario = `INSERT INTO TB_USUARIO (FK_TPO_USUARIO, COD_USUARIO, TEL_USUARIO, EMAIL_USUARIO, SNA_USUARIO) VALUES (3, '${codigoUsuario}', '${empresa.telefone}', '${empresa.email}', '${senha}')`;
+    const insertUsuario = `INSERT INTO TB_USUARIO (FK_TPO_USUARIO, COD_USUARIO, TEL_USUARIO, EMAIL_USUARIO, SNA_USUARIO) VALUES (1, '${codigoUsuario}', '${empresa.telefone}', '${empresa.email}', '${senha}')`;
 
     result = await Connection.Query(connection, insertUsuario);
 
