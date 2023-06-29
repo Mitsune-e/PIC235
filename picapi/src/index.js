@@ -52,6 +52,10 @@ app.get("/Empresa/BuscarTiposServico", controllers.Auth.ValidarJWT, controllers.
 app.get("/Empresa/Buscar", controllers.Auth.ValidarJWT, controllers.Empresa.BuscarDados);
 app.post("/Empresa/Cadastrar", [controllers.Auth.ValidarJWT, controllers.Auth.ValidarAcessoAdmin], controllers.Empresa.Cadastrar);
 
+app.get("/Projeto/BuscarPorEmpresa", controllers.Auth.ValidarJWT, controllers.Projeto.BuscarPorEmpresa);
+app.post("/Projeto/Cadastrar", [controllers.Auth.ValidarJWT, controllers.Auth.ValidarAcessoLiderMaximo], controllers.Projeto.Cadastrar);
+app.post("/Projeto/Deletar", [controllers.Auth.ValidarJWT, controllers.Auth.ValidarAcessoLiderMaximo], controllers.Projeto.Deletar);
+
 module.exports = {
   app
 }

@@ -17,7 +17,7 @@ function App() {
         <Route path="/inicialPerfil" element={<InicialPerfil />} />
         <Route path="/funcoes" element={<Funcoes />} />
         <Route path="/empresa" element={<Empresa />} />
-        <Route path="/novoprojeto" element={<NovoProjeto />} />
+        {/*<Route path="/novoprojeto" element={<NovoProjeto />} />*/}
         <Route path="/projeto" element={<Projeto />} />
         <Route path="/CustosFixos" element={<CustosFixos />} />
         <Route path="/CustosVariados" element={<CustosVariados />} />

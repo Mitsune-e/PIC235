@@ -4,7 +4,7 @@ import "./index.css"
 import { UsuarioService } from "../../services";
 import { DMN_FUNCOES } from "../../domains";
 
-export const Funcoes = (props) => {
+export const Funcoes = () => {
   const [Erro, setErro] = useState("");
   const [Usuarios, setUsuarios] = useState([]);
 
