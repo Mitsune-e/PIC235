@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Radio } from "../../components";
+import "./index.css"
 
-export function UseRadio(data, title, name, titleName, valueName, selectValue = null) {
+export function UseRadio(data, title, name, titleName, valueName, selectValue = null, inline = false) {
   const [Value, setValue] = useState("");
 
   const component = (
     <>
-      <div>
+      <div className={`${inline ? "radio-container-inline" : ""}`}>
         <label className="form-label text-navy">{title}</label>
-        <ul className="list-group">
+        <ul className={`list-group ${inline ? "radio-inline" : ""}`}>
           {data.map((x, i) => {
             return (
               <Radio
