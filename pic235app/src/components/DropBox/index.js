@@ -14,6 +14,7 @@ export const DropBrox = (props) => {
       {
         props.options.length > 0 && <>
           <select className="round" id={props.id} value={props.value} onChange={(e) => props.onChange(e.target.value)}>
+            <option key={-1} value={null}>{"Escolha uma opção"}</option>
             {props.options.map((option, index) => {
               return (
                 <option

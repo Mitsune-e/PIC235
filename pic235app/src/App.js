@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { Home, Cadastro, Login, CadastroEmpresa, Dashboard, Notificacoes, Funcoes, Credenciamento, SelecioneEmpresa, CustosVariados, CustosFixos, Empresa, Projeto, NovoProjeto, InicialPerfil } from "./pages";
+import { Home, Cadastro, Login, CadastroEmpresa, Dashboard, Notificacoes, Funcoes, Credenciamento, SelecioneEmpresa, Custos, Empresa, Projeto, InicialPerfil } from "./pages";
 
 function App() {
   return (
@@ -17,10 +17,8 @@ function App() {
         <Route path="/inicialPerfil" element={<InicialPerfil />} />
         <Route path="/funcoes" element={<Funcoes />} />
         <Route path="/empresa" element={<Empresa />} />
-        {/*<Route path="/novoprojeto" element={<NovoProjeto />} />*/}
         <Route path="/projeto" element={<Projeto />} />
-        <Route path="/CustosFixos" element={<CustosFixos />} />
-        <Route path="/CustosVariados" element={<CustosVariados />} />
+        <Route path="/Custos" element={<Custos />} />
       </Routes>
     </div>
   )

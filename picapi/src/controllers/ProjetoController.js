@@ -21,7 +21,7 @@ async function BuscarPorEmpresa(req, res) {
   }
   finally {
     res.writeHead(statusCode, { "Content-Type": "application/json" });
-    if (result.length > 0) {
+    if (error === null) {
       return res.end(JSON.stringify(result))
     }
     else {
