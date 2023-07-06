@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Radio } from "../../components";
+import { Radio, SideBar } from "../../components";
 import "./index.css"
 import { UsuarioService } from "../../services";
 import { DMN_FUNCOES } from "../../domains";
@@ -64,7 +64,7 @@ export const Funcoes = () => {
 
   return (
     <div>
-      <Navbar />
+      <SideBar />
       <div className="mainbox">
         <div className="container">
           {/*<div className="options-container">

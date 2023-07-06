@@ -1,70 +1,130 @@
-import React, { useState } from "react";
-import { Navbar, SideBar } from "../../components";
+import React, { useState, useEffect } from "react";
+import { SideBar } from "../../components";
 import "./index.css"
+import { CustosService, ProjetoService } from "../../services";
 
 export const Dashboard = () => {
-    return (
-        <div>
-            <SideBar />
-            <div className="mainbox">
-                <div className="form-custos-cadastrados border border-secondary-subtle">
-                    <form>
-                        <div className="col">
-                            <div className="mb-1 titulo-dashboard">
-                                <h3 className="text-navy">Dashboard</h3>
-                            </div>
-                            <div>
-                                <div className="mb-3 form-table">
-                                    <label htmlFor="CustoFixosCadastrado" className="form-label text-navy">Custos Fixos Cadastrados</label>
-                                    <table>
-                                        <tr>
-                                            <th>Descrição</th>
-                                            <th>Classificação</th>
-                                            <th>Valor</th>
-                                            <th>Vigência a partir de </th>
-                                            <th>Vigência até</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Comissão de vendas</td>
-                                            <td>Mês</td>
-                                            <td>R$ 500</td>
-                                            <td>28/08/2024</td>
-                                            <td>28/09/2024</td>
-                                        </tr>
-                                        <tr>
-                                            <td>teste xxx</td>
-                                            <td>anual</td>
-                                            <td>R$ 00000</td>
-                                            <td>xx/xx/xxxx</td>
-                                            <td>xx/xx/xxxx</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div className="mb-3 form-table">
-                                    <label htmlFor="InvestimentosCadastrados" className="form-label text-navy">Investimentos Cadastrados</label>
-                                    <table>
-                                        <tr>
-                                            <th>Descrição</th>
-                                            <th>Unidade</th>
-                                            <th>Valor</th>
-                                        </tr>
-                                        <tr>
-                                            <td>Aluguel</td>
-                                            <td>xx</td>
-                                            <td>R$ 500</td>
-                                        </tr>
-                                        <tr>
-                                            <td>teste xxx</td>
-                                            <td>xxxxx</td>
-                                            <td>R$ 00000</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+  const [Erro, setErro] = useState("");
+
+
+  const [Projetos, setProjetos] = useState([]);
+  const [Custos, setCustos] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        await CarregarCustos();
+        await CarregarProjetos();
+      }
+      catch (e) {
+        setErro(e);
+      }
+    })()
+  }, [])
+
+  async function CarregarCustos() {
+    try {
+      const custos = await CustosService.BuscarPorEmpresa();
+      setCustos(custos)
+    }
+    catch (e) {
+      setErro(e);
+    }
+  }
+
+  async function CarregarProjetos() {
+    try {
+      const projetos = await ProjetoService.BuscarPorEmpresa();
+      setProjetos(projetos);
+    }
+    catch (e) {
+      setErro(e);
+    }
+  }
+
+  return (
+    <div>
+      <SideBar />
+      <div className="mainbox">
+        <div className="form-custos-cadastrados border border-secondary-subtle">
+          <form>
+            <div className="form-row">
+              <div className="col">
+                <div className="mb-1 titulo-projeto">
+                  <h3 className="text-navy">Custos da sua Empresa</h3>
                 </div>
+                <div>
+                  {Custos.length > 0 && <>
+                    <div className="table-responsive">
+                      {/* Expenses table */}
+                      <table className="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Descricao</th>
+                            <th>Projeto</th>
+                            <th>Valor</th>
+                            <th>Unidade</th>
+                            <th>Descrição Unidade</th>
+                            <th>Data Inicial</th>
+                            <th>Data Final</th>
+                            <th>Tipo</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {Custos.map((custo, index) => (
+                            <tr key={index}>
+                              <td>{custo.DESC_CUSTOS}</td>
+                              <td>{custo.DESC_PROJETO}</td>
+                              <td>{custo.VALOR_CUSTOS}</td>
+                              <td>{custo.UNID_CUSTOS}</td>
+                              <td>{custo.DESC_TPO_UNIDADE}</td>
+                              <td>{custo.VIGENCIA_TO_CUSTOS}</td>
+                              <td>{custo.VIGENCIA_ATE_CUSTOS}</td>
+                              <td>{custo.DESC_TPO_CUSTO}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>}
+
+                  {Custos.length === 0 && <>
+                    <div className="alert alert-info">{"Nenhum custo cadastrado no momento."}</div>
+                  </>}
+                </div>
+                <div id="custo-table">
+                  <div className="mb-1 titulo-projeto">
+                    <h3 className="text-navy">Projetos da sua Empresa</h3>
+                  </div>
+
+                  <div>
+                    {Projetos.length > 0 && <>
+                      <div className="table-responsive">
+                        <table className="table table-striped">
+                          <thead>
+                            <tr>
+                              <th>Nome</th>
+                              <th>Descrição</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {Projetos.map((projeto, index) => (
+                              <tr key={index}>
+                                <td>{projeto.NOM_PROJETO}</td>
+                                <td>{projeto.DESC_PROJETO}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </>}
+                  </div>
+                </div>
+              </div>
             </div>
+          </form>
         </div>
-    )
+      </div>
+    </div>
+  )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar } from "../../components";
+import { SideBar } from "../../components";
 import "./index.css";
 import { UseDropBox, UseInput, UseRadio } from "../../hooks";
 import { CustosService, ProjetoService } from "../../services";
@@ -121,7 +121,7 @@ export const Custos = (props) => {
 
   return (
     <div>
-      <Navbar />
+      <SideBar />
 
       <div className="mainbox">
         <div className="form-cadastro border border-secondary-subtle">

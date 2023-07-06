@@ -12,6 +12,10 @@
     color: navy;
 }
 
+.mainbox {
+    margin-top: 10px !important;
+}
+
 .round {
     border-radius: 100px;
     border: 2px solid rgba(119, 133, 135, 0.37);

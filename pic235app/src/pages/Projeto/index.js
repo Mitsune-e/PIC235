@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../../components";
+import { SideBar } from "../../components";
 import "./index.css"
 import { ProjetoService } from "../../services";
 import { UseInput } from "../../hooks";
@@ -73,7 +73,7 @@ export const Projeto = () => {
 
   return (
     <div>
-      <Navbar />
+      <SideBar />
       {/*To do: rename for login stuff */}
       <div className="mainbox">
         <div className="form-login border border-secondary-subtle">

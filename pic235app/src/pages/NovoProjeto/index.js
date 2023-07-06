@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar } from "../../components";
+import { SideBar } from "../../components";
 import "./index.css"
 
 export const NovoProjeto = (props) => {
@@ -7,7 +7,7 @@ export const NovoProjeto = (props) => {
 
   return (
     <div>
-      <Navbar />
+      <SideBar />
       {/*To do: rename for login stuff */}
       <div className="mainbox">
         <div className="form-login border border-secondary-subtle">
