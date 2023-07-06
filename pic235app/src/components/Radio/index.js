@@ -4,9 +4,9 @@ export const Radio = (props) => {
 
   return (
     <>
-      <li className="list-group-item rounded-pill mb-2 darker-border">
+      <li className={"list-group-item rounded-pill mb-2 darker-border"}>
         <input
-          className="form-check-input me-1"
+          className={"form-check-input me-1"}
           type="radio"
           name={props.name}
           value={props.value}

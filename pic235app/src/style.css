@@ -4,12 +4,16 @@
     font-family: 'K2D', sans-serif;
 }
 
-.fit-content {
-    width: fit-content;
+.form-row {
+    flex-wrap: wrap;
 }
 
 .text-navy {
     color: navy;
+}
+
+.mainbox {
+    margin-top: 10px !important;
 }
 
 .round {

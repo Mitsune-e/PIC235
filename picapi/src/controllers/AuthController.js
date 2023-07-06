@@ -51,7 +51,7 @@ async function ValidarAcessoLiderMaximo(req, res, next) {
       return;
     }
 
-    const codigoFuncao = select[0].COD_FUNCOES;
+    const codigoFuncao = result[0].COD_FUNCOES;
 
     if (codigoFuncao !== DMN_FUNCOES.LIDER_MAXIO)
       return res.status(403).send("Acesso restrito");

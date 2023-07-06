@@ -1,0 +1,20 @@
+.offcanvas.offcanvas-start {
+  background-color: rgb(243, 243, 243);
+  width: 350px !important;
+}
+
+.sidebar-nav {
+  list-style: none;
+}
+
+.sidebar-item {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 15px;
+
+}
+
+.sidebar-link {
+  text-decoration: none;
+  color: blue
+}

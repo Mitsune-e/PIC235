@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Navbar } from "../../components";
+import { SideBar } from "../../components";
 import "./index.css";
 
 export const InicialPerfil = (props) => {
   return (
     <div>
-      <Navbar />
+      <SideBar />
       <div className="mainbox">
 
         <div className="mb-1 titulo-cadastro">

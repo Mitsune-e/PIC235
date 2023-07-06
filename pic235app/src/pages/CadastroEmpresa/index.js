@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../../components";
+import { SideBar } from "../../components";
 import "./index.css"
 import { UseInput, UseRadio } from "../../hooks";
 import { EmpresaService } from "../../services";
@@ -76,8 +76,8 @@ export const CadastroEmpresa = () => {
 
   return (
     <div>
-      <Navbar />
       <div className="mainbox">
+        <SideBar />
         <div className="form-cadastro border border-secondary-subtle">
           <form>
             <div className="col">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Navbar } from "../../components";
+import { SideBar } from "../../components";
 import "./index.css"
 import { UseRadio, UseReadOnlyInput } from "../../hooks";
 import { EmpresaService } from "../../services";
@@ -54,7 +54,7 @@ export const Empresa = () => {
 
   return (
     <div>
-      <Navbar />
+      <SideBar />
       <div className="mainbox">
         {Erro !== "" && <div className="alert alert-danger">{Erro}</div>}
 
@@ -94,19 +94,6 @@ export const Empresa = () => {
                 {/* Fourth Row, Radio groups, Seller or Provider */}
                 {TipoServicoRadio}
 
-              </div>
-
-              {/* Five Row, Buttons*/}
-
-              <div className="sectionButtons">
-                <div className="inputSecionButtons">
-                  <div className="buttonInformation">
-                    <h4>Senha Para novos usuarios</h4>
-                    <img src="https://files.axshare.com/gsc/DAAJBO/6e/2f/5e/6e2f5e963d294914961ba8a52987fa7a/images/empresa/u48.svg?pageId=22e58762-4d59-44a5-aa46-71d82cd49c81"></img>
-                  </div>
-                  <input placeholder="Aghashfg"></input>
-                </div>
-                <input className="buttons" id="submitButton" type="submit" value="Gerar nova senha"></input>
               </div>
             </form>
           </div>

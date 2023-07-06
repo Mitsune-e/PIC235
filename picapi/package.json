@@ -1,7 +1,7 @@
 {
   "name": "pic-api",
   "description": "A simple Node.js based app which connects to some db and acts as an api.",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"

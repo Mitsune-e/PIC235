@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navbar } from "../../components";
+import { SideBar } from "../../components";
 import "./index.css"
 
 export const Notificacoes = (props) => {
@@ -7,7 +7,7 @@ export const Notificacoes = (props) => {
 
   return (
     <div>
-      <Navbar />
+      <SideBar />
       <div className="mainbox">
         <div className="mb-1 titulo-cadastro">
           <h3 className="text-navy">Notificações</h3>

@@ -1,0 +1,13 @@
+.radio-inline {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-evenly !important;
+  width: 100% !important;
+}
+
+.radio-container-inline {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  align-items: center !important;
+}

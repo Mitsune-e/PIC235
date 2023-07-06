@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Navbar, Radio } from "../../components";
+import { Radio, SideBar } from "../../components";
 import "./index.css"
 import { UsuarioService } from "../../services";
 import { DMN_FUNCOES } from "../../domains";
 
-export const Funcoes = (props) => {
+export const Funcoes = () => {
   const [Erro, setErro] = useState("");
   const [Usuarios, setUsuarios] = useState([]);
 
@@ -64,7 +64,7 @@ export const Funcoes = (props) => {
 
   return (
     <div>
-      <Navbar />
+      <SideBar />
       <div className="mainbox">
         <div className="container">
           {/*<div className="options-container">
