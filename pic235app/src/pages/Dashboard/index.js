@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Navbar } from "../../components";
+import { Navbar, SideBar } from "../../components";
 import "./index.css"
 
 export const Dashboard = () => {
     return (
-            <div>
-            <Navbar />
+        <div>
+            <SideBar />
             <div className="mainbox">
                 <div className="form-custos-cadastrados border border-secondary-subtle">
                     <form>

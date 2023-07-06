@@ -36,7 +36,7 @@ export const Login = (props) => {
 
       await Session.setToken(token);
 
-      navigate("/");
+      navigate("/dashboard");
     }
     catch (e) {
       console.log(e)
