@@ -24,7 +24,7 @@ export const SideBar = () => {
 
   return (
     <>
-      <div>
+      <div id="sidebar">
         <div className="offcanvas offcanvas-start show" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="side-panel" aria-labelledby="offcanvasScrollingLabel">
           <div className="offcanvas-header">
             <h5 className="offcanvas-title text-navy" id="offcanvasScrollingLabel">{nomeEmpresa}</h5>
