@@ -63,6 +63,8 @@ export const CustosFixos = (props) => {
             </span>
           </div>
 
+          <div className="container">
+          <h3>Cadastrar Custos</h3>
           <div className="input-container">
             <div className="input-group">
               <label htmlFor="descricao">Descrição do Custo</label>
@@ -76,12 +78,15 @@ export const CustosFixos = (props) => {
 
             <div className="input-group">
               <label htmlFor="classificacao">Classificação da Unidade</label>
-              <select
+              <select 
                 id="classificacao"
                 value={classificacao}
                 onChange={(e) => setClassificacao(e.target.value)}
               >
                 <option value="mes">Mês</option>
+                <option value="mes">Ano</option>
+                <option value="mes">Litro (L)</option>
+                <option value="mes">Metro (M)</option>
               </select>
             </div>
 
@@ -106,7 +111,7 @@ export const CustosFixos = (props) => {
             </div>
 
             <div className="input-group">
-              <label htmlFor="vigencia-inicio">Vigência a partir de:</label>
+              <label htmlFor="vigencia-inicio">Vigência a partir de: (Obrigatório)</label>
               <input
                 type="date"
                 id="vigencia-inicio"
@@ -116,7 +121,7 @@ export const CustosFixos = (props) => {
             </div>
 
             <div className="input-group">
-              <label htmlFor="vigencia-fim">Vigência até:</label>
+              <label htmlFor="vigencia-fim">Vigência até: (Obrigatório)</label>
               <input
                 type="date"
                 id="vigencia-fim"
@@ -159,6 +164,7 @@ export const CustosFixos = (props) => {
               ))}
             </tbody>
           </table>
+        </div>
         </div>
       </div>
     </div>
