@@ -34,7 +34,7 @@ export const SideBar = () => {
               <li className="sidebar-item"><Link className="sidebar-link" to="/dashboard">Dashboard</Link></li>
               <li className="sidebar-item"><Link className="sidebar-link" to="/empresa">Perfil da Empresa</Link></li>
               <li className="sidebar-item"><Link className="sidebar-link" to="/funcoes">Funções da Empresa</Link></li>
-              <li className="sidebar-item"><Link className="sidebar-link" to="/custos">Cadastro de Custos</Link></li>
+              <li className="sidebar-item"><Link className="sidebar-link" to="/recurso">Cadastro de Aplicação de Recurso</Link></li>
               <li className="sidebar-item"><Link className="sidebar-link" to="/projeto">Projeto</Link></li>
               <li className="sidebar-item"><Link className="sidebar-link" to="/cadastro">Cadastro de Usuarios</Link></li>
             </ul>
