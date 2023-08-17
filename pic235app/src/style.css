@@ -16,6 +16,11 @@
     margin-top: 10px !important;
 }
 
+#sidebar+.mainbox {
+    /* mainbox for pages with sidebar */
+    margin: auto 15rem auto 600px !important;
+}
+
 .round {
     border-radius: 100px;
     border: 2px solid rgba(119, 133, 135, 0.37);

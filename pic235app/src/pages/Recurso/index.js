@@ -5,7 +5,7 @@ import { UseDropBox, UseInput, UseRadio } from "../../hooks";
 import { CustosService, ProjetoService } from "../../services";
 
 
-export const Custos = (props) => {
+export const Recurso = (props) => {
   const [Erro, setErro] = useState("");
 
   const [Descricao, DescricaoInput] = UseInput("Descrição do Custo", "descricao-custo");
@@ -128,7 +128,7 @@ export const Custos = (props) => {
           <form>
             <div className="col">
               <div className="mb-1 titulo-cadastro">
-                <h3 className="text-navy">Cadastro de Custos</h3>
+                <h3 className="text-navy">Cadastro de Aplicação de Recurso</h3>
               </div>
 
               <div className="form-row">
